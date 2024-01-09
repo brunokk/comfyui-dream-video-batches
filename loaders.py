@@ -27,6 +27,7 @@ class DVB_LoadImageFromPath:
         return ALWAYS_CHANGED_FLAG
 
     def result(self, image_path, **other):
+        image_path = image_path if "/" in image_path else os.path.join(os.getcwd(), "input", image_path) # is a filename; ec jan9.2024
         return (DVB_Image.join_to_tensor_data([DVB_Image(file_path=image_path)]),)
 
 
